@@ -75,7 +75,12 @@ echo ""
 echo ""
 echo ""
 echo "Syncing Device Tree Common from git"
-cd ~/Desktop/ColtOS/device/xiaomi/ && mkdir msm8953-common && cd ~/Desktop/ColtOS/device/xiaomi/msm8953-common/ && git clone -b derp10 https://github.com/nparashar150/android_device_xiaomi_msm8953-common.git
+
+cd ~/Desktop/ColtOS/device/xiaomi/
+mkdir msm8953-common
+cd ~/Desktop/ColtOS/device/xiaomi/msm8953-common/
+git clone -b derp10 https://github.com/nparashar150/android_device_xiaomi_msm8953-common.git
+
 echo ""
 echo ""
 echo ""
@@ -241,6 +246,19 @@ echo ""
 echo ""
 echo "Building Colt OS"
 cd ~/Desktop/CotlOS/
-. build/envsetup.sh && lunch colt_tissot-userdebug && mka clean && mka api-stubs-docs && mka hiddenapi-lists-docs && mka system-api-stubs-docs && mka test-api-stubs-docs && mka colt
-
-
+. build/envsetup.sh && lunch colt_tissot-userdebug
+mka clean
+mka api-stubs-docs
+mka hiddenapi-lists-docs
+mka system-api-stubs-docs
+mka test-api-stubs-docs
+mka colt
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+echo "Did my script work for you"
+echo ""
+echo ""
+echo ""
