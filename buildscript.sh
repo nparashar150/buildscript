@@ -10,10 +10,12 @@ echo "Select an Option ;)"
 echo "1. Sync Device Tree + Sync Device Tree Common + Sync Kernel + Sync Vendor + Apply Patches + Build"
 echo "2. Sync Device Tree + Sync Device Tree Common + Sync Kernel + Sync Vendor + Build"
 echo "3. Build Clean"
-echo "4. Sync Device Tree Sync Device Tree Common + Sync Kernel + Sync Vendor"
+echo "4. Sync Device Tree + Sync Device Tree Common + Sync Kernel + Sync Vendor"
 echo "5. Apply Patches"
 echo "6. Dirty Build"
-
+echo "7. Drity Build with api"
+echo ""
+echo ""
 read Option 
 
 if [ $Option = 1 ]
@@ -23,7 +25,7 @@ mkdir ~/bin
 PATH=~/bin:$PATH
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
-mkdir ~/Desktop/ColtOS
+mkdir /home/nparashar150/Desktop/ColtOS
 cd ~/Desktop/ColtOS
 repo init -u git://github.com/Colt-Enigma/platform_manifest.git -b c10
 repo sync --no-tags --no-clone-bundle --force-sync -c 
@@ -87,7 +89,7 @@ mkdir ~/bin
 PATH=~/bin:$PATH
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
-mkdir ~/Desktop/ColtOS
+mkdir /home/nparashar150/Desktop/ColtOS
 cd ~/Desktop/ColtOS
 repo init -u git://github.com/Colt-Enigma/platform_manifest.git -b c10
 repo sync --no-tags --no-clone-bundle --force-sync -c 
@@ -130,8 +132,12 @@ then
 echo "Building Colt OS"
 cd ~/Desktop/ColtOS/
 . build/envsetup.sh && lunch colt_tissot-userdebug
-make clean
-make colt
+mke clean
+mka api-stubs-docs
+mka hiddenapi-lists-docs
+mka system-api-stubs-docs
+mka test-api-stubs-docs
+mka colt
 echo "Did my script work for you"
 fi
 
@@ -142,7 +148,7 @@ mkdir ~/bin
 PATH=~/bin:$PATH
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
-mkdir ~/Desktop/ColtOS
+mkdir /home/nparashar150/Desktop/ColtOS
 cd ~/Desktop/ColtOS
 repo init -u git://github.com/Colt-Enigma/platform_manifest.git -b c10
 repo sync --no-tags --no-clone-bundle --force-sync -c 
@@ -199,6 +205,20 @@ echo "Building Colt OS"
 cd ~/Desktop/ColtOS/
 . build/envsetup.sh && lunch colt_tissot-userdebug
 make colt
+echo "Did my script work for you"
+fi
+
+if [ $Option = 7 ]
+then
+#Building ColtOS
+echo "Building Colt OS"
+cd ~/Desktop/ColtOS/
+. build/envsetup.sh && lunch colt_tissot-userdebug
+mka api-stubs-docs
+mka hiddenapi-lists-docs
+mka system-api-stubs-docs
+mka test-api-stubs-docs
+mka colt
 echo "Did my script work for you"
 fi
 
