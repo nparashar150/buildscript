@@ -179,10 +179,12 @@ fi
 if [ $Option = 3 ]
 then
 #Building ColtOS
-
+echo "Please tell where is your Repository Synced ;)"
 echo "Building Colt OS"
+read repository
 cd $repository
-. build/envsetup.sh && lunch colt_tissot-userdebug
+. build/envsetup.sh
+lunch colt_tissot-userdebug
 mka clean
 mka api-stubs-docs
 mka hiddenapi-lists-docs
@@ -242,6 +244,8 @@ fi
 
 if [ $Option = 5 ]
 then 
+read repository
+cd $repository
 #Applying Patches
 echo ""
 echo "Applying Patches wait you need to be here now for adding a # at swap"
@@ -259,6 +263,8 @@ export CCACHE_EXEC=$
 echo "CCache and ZRAM configured"
 #Applying Metalava Patch
 echo "Applying Metalava Patch"
+echo "Tell your Repository Path ;)"
+read repository
 cd $repository/build/soong/
 git fetch https://github.com/Magma-WIP/build_soong ten-metalava
 git cherry-pick bcd1bb529132905cf55e72f5a2a6ba19a99f60ac^..dc3365fbde3b2a5773e655f690bb073967100795 
@@ -270,6 +276,7 @@ then
 #Building ColtOS
 
 echo "Building Colt OS"
+read repository
 cd $repository
 . build/envsetup.sh && lunch colt_tissot-userdebug
 mka colt
@@ -281,6 +288,7 @@ then
 #Building ColtOS
 
 echo "Building Colt OS"
+read repository
 cd $repository
 . build/envsetup.sh && lunch colt_tissot-userdebug
 mka api-stubs-docs
