@@ -98,6 +98,7 @@ echo "1. CCache"
 echo "2. ZRam"
 echo "3. Metalava"
 echo "4. All of 'em "
+echo "5. None of 'em "
 read choice
 if [ $choice = 1 ]
 then 
