@@ -7,5 +7,5 @@ Configure it as per your ROM
 Remove ZRam and Metalava lines if you have more than 8Gb of ram 
 As I have 8Gb so I need these patches 
 
-Give it the permission it needs by `chowm` or `chmod`
+Give it the permission it needs by `chown` or `chmod`
 # Both the scripts are very helpful
