@@ -1,6 +1,6 @@
 #!/bin/bash
-repo init -u https://github.com/ReloadedOS/android_manifest.git -b q
-repo sync -j$(nproc --all) --force-sync -c --no-clone-bundle --no-tags --optimized-fetch --prune
+repo init -u https://github.com/Cosmic-OS/platform_manifest.git -b quasar-release
+repo sync --no-tags --no-clone-bundle --force-sync -c -j10
 git clone https://github.com/Paranoid-Tissot/android_device_xiaomi_tissot.git -b pa device/xiaomi/tissot/
 git clone https://github.com/Paranoid-Tissot/android_device_xiaomi_msm8953-common.git -b pa device/xiaomi/msm8953-common/
 git clone https://github.com/DerpFest-Devices/kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953/
