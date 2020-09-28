@@ -113,8 +113,8 @@ function compile() {
 # Zipping
 function zipping() {
     cd $REPACK_DIR || exit 1
-    zip -r9 Perf+Kernel.zip *
-    curl https://bashupload.com/Perf+Kernel.zip --data-binary @Perf+Kernel.zip
+    zip -r9 Rify.zip *
+
 }
 compile
 zipping
