@@ -4,7 +4,7 @@
 echo ""
 echo "Sit freely you need to relax when this is going on"
 echo "Please Install Tools First"
-echo "Did you configured the build environment ?"
+echo "Did you configured the build environment ? If no then use my buildscript to set up the environment"
 echo "yes or no"
 read environment
 if [ $environment = yes ]
@@ -40,26 +40,27 @@ mkdir ~/bin
 PATH=~/bin:$PATH
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
-echo "Where do you want to clone the repository:"
+echo "Where do you want to clone the repository: Tell me the path"
 read repository
 mkdir $repository
 cd $repository
-repo init -u git://github.com/Colt-Enigma/platform_manifest.git -b c10
-repo sync --no-tags --no-clone-bundle --force-sync -c 
+repo init -u https://github.com/PixelExtended/manifest -b r
+repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 echo ""
-ecmka cleanho ""
+echo ""
+pwd
 echo "Repository Synced at the path you specified ;)"
 
 #Adding the Device Tree in the build
 echo ""
 echo "Syncing Device Tree from git ;)"
-git clone -b colt https://github.com/nparashar150/android_device_xiaomi_tissot.git $repository/device/xiaomi/tissot/
+git clone https://github.com/xiaomi-sdm660/android_device_xiaomi_jasmine_sprout.git $repository/device/xiaomi/jasmine_sprout/
 echo "Device Tree Added in the repository ;)"
 
 #Adding Device Tree Common
 echo ""
 echo "Syncing Device Tree Common from git ;)"
-git clone https://github.com/nparashar150/android_device_xiaomi_msm8953-common.git $repository/device/xiaomi/msm8953-common/
+git clone https://github.com/xiaomi-sdm660/android_device_xiaomi_sdm660-common.git $repository/device/xiaomi/sdm660-common/
 echo "Device Tree Common Added in the repository ;)"
 echo ""
 #Adding Kernel to the Build
@@ -68,50 +69,35 @@ echo ""
 echo ""
 echo ""
 echo "Adding kernel to the Build ;)"
-git clone https://github.com/nparashar150/kernel_xiaomi_tissot.git $repository/kernel/xiaomi/tissot/
-git clone https://github.com/MASTERGUY/kernel_xiaomi_msm8953.git $repository/kernel/xiaomi/msm8953/
+git clone https://github.com/xiaomi-sdm660/android_kernel_xiaomi_sdm660.git $repository/kernel/xiaomi/sdm660/
 echo ""
 echo "Competed Kernel Syncing and Configuration ;)"
 
 #Syncing Vendor for Building
 echo ""
 echo "Syncing and Configuring Vendor for Build ;)"
-git clone https://github.com/nparashar150/vendor_xiaomi_tissot.git $repository/vendor/xiaomi/tissot/
+git clone https://github.com/xiaomi-sdm660/android_vendor_xiaomi_sdm660-common.git $repository/vendor/xiaomi/sdm660-common/
+git clone https://github.com/xiaomi-sdm660/vendor_xiaomi_wayne-common.git $repository/vendor/xiaomi/wayne-common/
+git clone https://github.com/xiaomi-sdm660/android_vendor_xiaomi_MiuiCamera.git $repository/vendor/xiaomi/MiuiCamera/
+
 echo "Added and Configured Vendor for the Build ;)"
 
 #Applying Patches
-echo ""
-echo "Applying Patches wait you need to be here now for adding a # at swap"
-#zram && ccache config
-sudo apt install zram-config
-echo "Add a # carefully at swap and save and exit"
-sudo nano /etc/fstab
-cat /proc/swaps
-nano ~/.bashrc
-source ~/.bashrc
-prebuilts/misc/linux-x86/ccache/ccache -M 50G
-ccache -M 50G
-export USE_CCACHE=1
-export CCACHE_EXEC=$ 
-echo "CCache and ZRAM configured"
+echo "To install zram go to https://www.techrepublic.com/article/how-to-enable-the-zram-module-for-faster-swapping-on-linux/"
 #Applying Metalava Patch
 echo "Applying Metalava Patch"
 cd $repository/build/soong/
-git fetch https://github.com/Magma-WIP/build_soong ten-metalava
-git cherry-pick bcd1bb529132905cf55e72f5a2a6ba19a99f60ac^..dc3365fbde3b2a5773e655f690bb073967100795 
+git fetch https://github.com/nparashar150/android_build_soong
+git cherry-pick c8ba7af59acda55a16835727d1d351b8d58a5ca4
 echo "Added Metalava Patch"
 
-#Building ColtOS
+#Building Pixel Extended
 
-echo "Building Colt OS"
+echo "Building Pixel Extended"
 cd $repository
-. build/envsetup.sh && lunch colt_tissot-userdebug
-mka clean
-mka api-stubs-docs
-mka hiddenapi-lists-docs
-mka system-api-stubs-docs
-mka test-api-stubs-docs
-mka colt
+. build/envsetup.sh && lunch aosp_jasmine_sprout-userdebug
+make api-stubs-docs
+mka bacon -j$(nproc --all)
 echo "Hope my script worked for you ;)"
 fi
 
@@ -123,26 +109,27 @@ mkdir ~/bin
 PATH=~/bin:$PATH
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
-echo "Where do you want to clone the repository:"
+echo "Where do you want to clone the repository: Tell me the path"
 read repository
 mkdir $repository
 cd $repository
-repo init -u git://github.com/Colt-Enigma/platform_manifest.git -b c10
-repo sync --no-tags --no-clone-bundle --force-sync -c 
+repo init -u https://github.com/PixelExtended/manifest -b r
+repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 echo ""
 echo ""
+pwd
 echo "Repository Synced at the path you specified ;)"
 
 #Adding the Device Tree in the build
 echo ""
 echo "Syncing Device Tree from git ;)"
-git clone -b colt https://github.com/nparashar150/android_device_xiaomi_tissot.git $repository/device/xiaomi/tissot/
+git clone https://github.com/xiaomi-sdm660/android_device_xiaomi_jasmine_sprout.git $repository/device/xiaomi/jasmine_sprout/
 echo "Device Tree Added in the repository ;)"
 
 #Adding Device Tree Common
 echo ""
 echo "Syncing Device Tree Common from git ;)"
-git clone https://github.com/nparashar150/android_device_xiaomi_msm8953-common.git $repository/device/xiaomi/msm8953-common/
+git clone https://github.com/xiaomi-sdm660/android_device_xiaomi_sdm660-common.git $repository/device/xiaomi/sdm660-common/
 echo "Device Tree Common Added in the repository ;)"
 echo ""
 #Adding Kernel to the Build
@@ -151,46 +138,37 @@ echo ""
 echo ""
 echo ""
 echo "Adding kernel to the Build ;)"
-git clone https://github.com/nparashar150/kernel_xiaomi_tissot.git $repository/kernel/xiaomi/tissot/
-git clone https://github.com/MASTERGUY/kernel_xiaomi_msm8953.git $repository/kernel/xiaomi/msm8953/
+git clone https://github.com/xiaomi-sdm660/android_kernel_xiaomi_sdm660.git $repository/kernel/xiaomi/sdm660/
 echo ""
 echo "Competed Kernel Syncing and Configuration ;)"
 
 #Syncing Vendor for Building
 echo ""
 echo "Syncing and Configuring Vendor for Build ;)"
-git clone https://github.com/nparashar150/vendor_xiaomi_tissot.git $repository/vendor/xiaomi/tissot/
+git clone https://github.com/xiaomi-sdm660/android_vendor_xiaomi_sdm660-common.git $repository/vendor/xiaomi/sdm660-common/
+git clone https://github.com/xiaomi-sdm660/vendor_xiaomi_wayne-common.git $repository/vendor/xiaomi/wayne-common/
+git clone https://github.com/xiaomi-sdm660/android_vendor_xiaomi_MiuiCamera.git $repository/vendor/xiaomi/MiuiCamera/
+
 echo "Added and Configured Vendor for the Build ;)"
 
-#Building ColtOS
+#Building Pixel Extended
 
-echo "Building Colt OS"
+echo "Building Pixel Extended"
 cd $repository
-. build/envsetup.sh && lunch colt_tissot-userdebug
-mka clean
-mka api-stubs-docs
-mka hiddenapi-lists-docs
-mka system-api-stubs-docs
-mka test-api-stubs-docs
-mka colt
+. build/envsetup.sh && lunch aosp_jasmine_sprout-userdebug
+make api-stubs-docs
+mka bacon -j$(nproc --all)
 echo "Hope my script worked for you ;)"
 fi
 
 if [ $Option = 3 ]
 then
-#Building ColtOS
-echo "Please tell where is your Repository Synced ;)"
-echo "Building Colt OS"
-read repository
+#Building Pixel Extended
+echo "Building Pixel Extended"
 cd $repository
-. build/envsetup.sh
-lunch colt_tissot-userdebug
-mka clean
-mka api-stubs-docs
-mka hiddenapi-lists-docs
-mka system-api-stubs-docs
-mka test-api-stubs-docs
-mka colt
+. build/envsetup.sh && lunch aosp_jasmine_sprout-userdebug
+make api-stubs-docs
+mka bacon -j$(nproc --all)
 echo "Hope my script worked for you ;)"
 fi
 
@@ -202,26 +180,27 @@ mkdir ~/bin
 PATH=~/bin:$PATH
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
-echo "Where do you want to clone the repository:"
+echo "Where do you want to clone the repository: Tell me the path"
 read repository
 mkdir $repository
 cd $repository
-repo init -u git://github.com/Colt-Enigma/platform_manifest.git -b c10
-repo sync --no-tags --no-clone-bundle --force-sync -c 
+repo init -u https://github.com/PixelExtended/manifest -b r
+repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 echo ""
 echo ""
+pwd
 echo "Repository Synced at the path you specified ;)"
 
 #Adding the Device Tree in the build
 echo ""
 echo "Syncing Device Tree from git ;)"
-git clone -b colt https://github.com/nparashar150/android_device_xiaomi_tissot.git $repository/device/xiaomi/tissot/
+git clone https://github.com/xiaomi-sdm660/android_device_xiaomi_jasmine_sprout.git $repository/device/xiaomi/jasmine_sprout/
 echo "Device Tree Added in the repository ;)"
 
 #Adding Device Tree Common
 echo ""
 echo "Syncing Device Tree Common from git ;)"
-git clone https://github.com/nparashar150/android_device_xiaomi_msm8953-common.git $repository/device/xiaomi/msm8953-common/
+git clone https://github.com/xiaomi-sdm660/android_device_xiaomi_sdm660-common.git $repository/device/xiaomi/sdm660-common/
 echo "Device Tree Common Added in the repository ;)"
 echo ""
 #Adding Kernel to the Build
@@ -230,56 +209,44 @@ echo ""
 echo ""
 echo ""
 echo "Adding kernel to the Build ;)"
-git clone https://github.com/nparashar150/kernel_xiaomi_tissot.git $repository/kernel/xiaomi/tissot/
-git clone https://github.com/MASTERGUY/kernel_xiaomi_msm8953.git $repository/kernel/xiaomi/msm8953/
+git clone https://github.com/xiaomi-sdm660/android_kernel_xiaomi_sdm660.git $repository/kernel/xiaomi/sdm660/
 echo ""
 echo "Competed Kernel Syncing and Configuration ;)"
 
 #Syncing Vendor for Building
 echo ""
 echo "Syncing and Configuring Vendor for Build ;)"
-git clone https://github.com/nparashar150/vendor_xiaomi_tissot.git $repository/vendor/xiaomi/tissot/
+git clone https://github.com/xiaomi-sdm660/android_vendor_xiaomi_sdm660-common.git $repository/vendor/xiaomi/sdm660-common/
+git clone https://github.com/xiaomi-sdm660/vendor_xiaomi_wayne-common.git $repository/vendor/xiaomi/wayne-common/
+git clone https://github.com/xiaomi-sdm660/android_vendor_xiaomi_MiuiCamera.git $repository/vendor/xiaomi/MiuiCamera/
+
 echo "Added and Configured Vendor for the Build ;)"
 fi 
 
 if [ $Option = 5 ]
 then 
+echo "Please tell me the path of the Repository"
 read repository
 cd $repository
 #Applying Patches
-echo ""
-echo "Applying Patches wait you need to be here now for adding a # at swap"
-#zram && ccache config
-sudo apt install zram-config
-echo "Add a # carefully at swap and save and exit"
-sudo nano /etc/fstab
-cat /proc/swaps
-nano ~/.bashrc
-source ~/.bashrc
-prebuilts/misc/linux-x86/ccache/ccache -M 50G
-ccache -M 50G
-export USE_CCACHE=1
-export CCACHE_EXEC=$ 
-echo "CCache and ZRAM configured"
+echo "To install zram go to https://www.techrepublic.com/article/how-to-enable-the-zram-module-for-faster-swapping-on-linux/"
 #Applying Metalava Patch
 echo "Applying Metalava Patch"
-echo "Tell your Repository Path ;)"
-read repository
 cd $repository/build/soong/
-git fetch https://github.com/Magma-WIP/build_soong ten-metalava
-git cherry-pick bcd1bb529132905cf55e72f5a2a6ba19a99f60ac^..dc3365fbde3b2a5773e655f690bb073967100795 
+git fetch https://github.com/nparashar150/android_build_soong
+git cherry-pick c8ba7af59acda55a16835727d1d351b8d58a5ca4
 echo "Added Metalava Patch"
 fi
 
 if [ $Option = 6 ]
 then
-#Building ColtOS
+#Building Pixel Extended
 
-echo "Building Colt OS"
+echo "Building Pixel Extended"
 read repository
 cd $repository
-. build/envsetup.sh && lunch colt_tissot-userdebug
-mka colt
+. build/envsetup.sh && lunch aosp_jasmine_sprout-userdebug
+mka bacon -j$(nproc --all)
 echo "Hope my script worked for you ;)"
 fi
 
@@ -290,12 +257,9 @@ then
 echo "Building Colt OS"
 read repository
 cd $repository
-. build/envsetup.sh && lunch colt_tissot-userdebug
+. build/envsetup.sh && lunch aosp_jasmine_sprout-userdebug
 mka api-stubs-docs
-mka hiddenapi-lists-docs
-mka system-api-stubs-docs
-mka test-api-stubs-docs
-mka colt
+mka bacon -j$(nproc --all)
 echo "Hope my script worked for you ;)"
 fi
 
@@ -303,5 +267,5 @@ fi
 
 if [ $environment = no ]
 then 
-exit
+echo "Check my other script to set up the build environment"
 fi
