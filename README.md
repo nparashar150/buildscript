@@ -8,4 +8,5 @@ Remove ZRam and Metalava lines if you have more than 8Gb of ram
 As I have 8Gb so I need these patches 
 
 Give it the permission it needs by `chown` or `chmod`
-# Both the scripts are very helpful
+Some scripts even need to be run as `Super User`.
+# All the scripts are very helpful
