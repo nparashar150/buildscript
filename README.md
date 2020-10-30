@@ -1,4 +1,4 @@
-# noob_buildscript
+# Buildscript
 This is the build script which includes how to sync &amp; how to configure &amp; how to build ROM... Change it as per your rom you just need a bit of tweaking... !! 
 
 It will be a good gesture if you don't kang it ... !! Just Fork it ... |'`-_-`'|
