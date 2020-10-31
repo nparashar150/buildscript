@@ -14,7 +14,7 @@ read Answer
 if [ $Answer = 1 ]
 then 
 git clone https://github.com/nparashar150/buildscript.git
-cd buildscript
+cd buildscript/scripts
 sudo bash env.sh
 fi
 echo "Do you want to sync the ROM?"

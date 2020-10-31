@@ -3,7 +3,7 @@
 echo ""
 echo "Sit freely you need to relax when this is going on"
 echo "Please Install Tools First"
-echo "Did you configured the build environment ? If no then use my buildscript to set up the environment"
+echo "Did you configured the build environment ?"
 echo "yes or no"
 read environment
 if [ $environment = yes ]
@@ -225,6 +225,6 @@ fi
 if [ $environment = no ]
 then 
 git clone https://github.com/nparashar150/buildscript.git
-cd buildscript
+cd buildscript/scripts
 sudo bash env.sh
 fi
