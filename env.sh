@@ -85,3 +85,11 @@ echo -e '\e]8;;https://github.com/nparashar150/android_build_soong\aApply Metala
 echo "I hope you liked my script."
 echo -e '\e]8;;https://github.com/nparashar150/\aFollow Me for more support.\e]8;;\a'
 fi
+echo "Done"
+echo "Exiting in 5 seconds"
+echo -ne '######                    (33%)\r'
+sleep 1
+echo -ne '#############             (66%)\r'
+sleep 3
+echo -ne '#######################  (100%)\r'
+echo -ne '\n'

@@ -1,8 +1,4 @@
 #!/bin/bash
-
-
-echo ""
-echo ""
 echo ""
 echo ":::       ::: :::::::::: :::        ::::::::   ::::::::  ::::    ::::  :::::::::: "
 echo ":+:       :+: :+:        :+:       :+:    :+: :+:    :+: +:+:+: :+:+:+ :+:        "
@@ -12,16 +8,14 @@ echo "+#+ +#+#+ +#+ +#+        +#+       +#+        +#+    +#+ +#+       +#+ +#+
 echo " #+#+# #+#+#  #+#        #+#       #+#    #+# #+#    #+# #+#       #+# #+#        "
 echo "  ###   ###   ########## ########## ########   ########  ###       ### ########## "
 echo ""
-echo ""
-echo ""
 echo "Do you want to setup Build Environment?"
 echo "Answer 1=yes and 2=no"
 read Answer
 if [ $Answer = 1 ]
 then 
-echo "Setting Up the Enviroment"
-sudo apt-get install git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig
-echo "Build Environment has been set up for you !"
+git clone https://github.com/nparashar150/buildscript.git
+cd buildscript
+sudo bash env.sh
 fi
 echo "Do you want to sync the ROM?"
 echo "Answer 1=yes and 2=no"
@@ -55,7 +49,6 @@ read devicebrand
 echo "Your device brand is $devicebrand"
 echo ""
 echo ""
-echo ""
 echo "Tell the path where you want to clone the repo"
 read repositor
 echo "Now give me the links of the Device Tree"
@@ -71,7 +64,6 @@ git clone $devicetreecmmn /device/$devicebrand/
 echo "Done cloning the device specific stuff"
 echo ""
 echo ""
-echo ""
 echo "Give me the Kernel link"
 read kernel
 cd $repositor/kernel/
@@ -83,7 +75,6 @@ read kernelcmmn
 cd $repositor/kernel/$devicebrand/
 git clone $kernelcmmn /kernel/$devicebrand/
 echo "Done cloning the kernel specific stuff"
-echo ""
 echo ""
 echo ""
 echo "Give me the link of the Vendor"
@@ -99,6 +90,8 @@ echo "2. ZRam"
 echo "3. Metalava"
 echo "4. All of 'em "
 echo "5. None of 'em "
+echo "*. Metalava patch is till Android 10 only. For Android 11 check My Github."
+echo -e '\e]8;;https://github.com/nparashar150/android_build_soong\aApply Metalava Patch for Android R.\e]8;;\a'
 read choice
 if [ $choice = 1 ]
 then 
@@ -154,7 +147,7 @@ cd $reposito/build/soong/
 git fetch https://github.com/Magma-WIP/build_soong ten-metalava
 git cherry-pick bcd1bb529132905cf55e72f5a2a6ba19a99f60ac^..dc3365fbde3b2a5773e655f690bb073967100795 
 fi
-echo "Done now exit !"
+echo "Done !"
 echo ""
 echo "::::::::::: :::    :::     :::     ::::    ::: :::    :::      :::   :::  ::::::::  :::    :::      "
 echo "    :+:     :+:    :+:   :+: :+:   :+:+:   :+: :+:   :+:       :+:   :+: :+:    :+: :+:    :+:      "
@@ -164,5 +157,10 @@ echo "    +#+     +#+    +#+ +#+     +#+ +#+  +#+#+# +#+  +#+           +#+    +
 echo "    #+#     #+#    #+# #+#     #+# #+#   #+#+# #+#   #+#          #+#    #+#    #+# #+#    #+#      "
 echo "    ###     ###    ### ###     ### ###    #### ###    ###         ###     ########   ########       "
 echo ""
-echo ""
-
+echo "Exiting in 5 seconds"
+echo -ne '######                    (33%)\r'
+sleep 1
+echo -ne '#############             (66%)\r'
+sleep 3
+echo -ne '#######################  (100%)\r'
+echo -ne '\n'
