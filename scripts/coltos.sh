@@ -13,5 +13,3 @@ git clone -b queso https://github.com/nparashar150/vendor_xiaomi_tissot.git vend
 git clone -b aex10 https://github.com/MASTERGUY/android_kernel_xiaomi_msm8953.git kernel/xiaomi/msm8953/
 git clone -b aex10 https://github.com/MASTERGUY/android_kernel_xiaomi_msm8953.git kernel/xiaomi/tissot/
 echo "Done the syncing process."
-echo "Shutting down the system."
-shutdown
