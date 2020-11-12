@@ -3,7 +3,7 @@ echo ""
 echo ""
 echo "Welcome to the script."
 echo "Installing neccessary stuff for you."
-sudo apt install vlc google-chrome-stable gnome-tweaks gnome-tweak-tool freedownloadmanager htop psensor telegram-desktop gimp spotify-client tlp tlp-rdw
+sudo apt install vlc google-chrome-stable gnome-tweaks gnome-tweak-tool freedownloadmanager htop psensor telegram-desktop gimp spotify-client tlp tlp-rdw grub-customizer
 sudo tlp start
 sudo dnf install git-all
 echo "Put your github username"
