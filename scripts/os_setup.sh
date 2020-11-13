@@ -3,9 +3,9 @@ echo ""
 echo ""
 echo "Welcome to the script."
 echo "Installing neccessary stuff for you."
-sudo apt install vlc google-chrome-stable gnome-tweaks gnome-tweak-tool freedownloadmanager htop psensor telegram-desktop gimp spotify-client tlp tlp-rdw grub-customizer
+sudo apt install vlc google-chrome-stable gnome-tweaks gnome-tweak-tool htop psensor telegram-desktop gimp tlp tlp-rdw grub-customizer
 sudo tlp start
-sudo dnf install git-all
+sudo apt install git-all
 echo "Put your github username"
 read username 
 git config --global user.name "$username"
@@ -14,6 +14,9 @@ read useremail
 git config --global user.email "$useremail"
 git config --global color.ui true
 git config --global core.editor emacs
+echo "Github username is: `git config user.name`"
+echo "Github useremail is: `git config user.email`"
+echo "Checking & Updating System."
 sudo apt update
 sudo apt upgrade
 sudo apt install lsb-core -y
