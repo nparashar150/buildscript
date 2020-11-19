@@ -3,9 +3,9 @@ echo ""
 echo ""
 echo "Welcome to the script."
 echo "Installing neccessary stuff for you."
-sudo apt install vlc google-chrome-stable gnome-tweaks gnome-tweak-tool htop psensor telegram-desktop gimp tlp tlp-rdw grub-customizer
+sudo apt-get install --ignore-missing -y vlc adb google-chrome-stable gnome-tweaks gnome-tweak-tool htop psensor telegram-desktop gimp tlp tlp-rdw grub-customizer repo android-tools-adb android-tools-fastboot lolcat toilet android-sdk-platform-tools-common teamviewer speedtest-cli snap rsync 
 sudo tlp start
-sudo apt install git-all
+sudo apt install git-all -y
 echo "Put your github username"
 read username 
 git config --global user.name "$username"
@@ -23,7 +23,7 @@ sudo apt install lsb-core -y
 echo "The OS installed is `lsb_release -d | cut -d ':' -f 2 | sed -e 's/^[[:space:]]*//'`."
 OS_VERSION="$(lsb_release -d | cut -d ':' -f 2 | sed -e 's/^[[:space:]]*//')"
 if [[ ${LSB_RELEASE} =~ "Ubuntu" ]]; then
-sudo apt install ubuntu-restricted-extras
+sudo apt install ubuntu-restricted-extras -y
 fi
 echo "Done"
 echo "Exiting in 5 seconds"
