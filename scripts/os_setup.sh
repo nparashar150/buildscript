@@ -3,7 +3,7 @@ echo ""
 echo ""
 echo "Welcome to the script."
 echo "Installing neccessary stuff for you."
-sudo apt-get install --ignore-missing -y vlc adb google-chrome-stable gnome-tweaks gnome-tweak-tool htop psensor telegram-desktop gimp tlp tlp-rdw grub-customizer repo android-tools-adb android-tools-fastboot lolcat toilet android-sdk-platform-tools-common teamviewer speedtest-cli snap rsync 
+sudo apt-get install --ignore-missing -y vlc adb google-chrome-stable gnome-tweaks gnome-tweak-tool htop psensor telegram-desktop gimp tlp tlp-rdw grub-customizer repo android-tools-adb android-tools-fastboot lolcat toilet android-sdk-platform-tools-common speedtest-cli snap rsync python kazam
 sudo tlp start
 sudo apt install git-all -y
 echo "Put your github username"
