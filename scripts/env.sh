@@ -44,7 +44,7 @@ echo ""
 JAVA_VERSION="$(java --version | head -n 1)"
 if [[ ${JAVA_VERSION} =~ "15" ]]; then 
 echo "You are on latest Java Version."
-elif [[ ${JAVA_VERSION} =~ "14" ]]; then
+elif [[ ${JAVA_VERSION} -ne "15" ]]; then
 echo "Installing latest Java Version."
 sudo add-apt-repository ppa:linuxuprising/java
 sudo apt update
