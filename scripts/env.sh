@@ -6,7 +6,7 @@ if [ $SUDO_USER ]; then
 echo ""
 echo ""
 echo ""
-echo "                                                                                                                     "
+echo "                                                                                                                             "
 echo "#  #  # ###### #       ####   ####  #    # ######    #####  ####     #    # #   #     ####   ####  #####  # #####  #####     "
 echo "#  #  # #      #      #    # #    # ##  ## #           #   #    #    ##  ##  # #     #      #    # #    # # #    #   #       "
 echo "#  #  # #####  #      #      #    # # ## # #####       #   #    #    # ## #   #       ####  #      #    # # #    #   #       "
@@ -31,6 +31,9 @@ elif [[ ${OS_VERSION} =~ "Mint 12" || $(OS_VERSION) =~ "Ubuntu 10" ]]; then
 sudo apt-get install git gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown libxml2-utils xsltproc -y
 sudo ln -s /usr/lib32/mesa/libGL.so.1 /usr/lib32/mesa/libGL.so
 sudo apt-get install libx11-dev:i386
+elif [[ ${OS_VERSION} -ne "Mint" || ${LSB_RELEASE} -ne "Ubuntu" ]]; then
+echo "You have installed OS other than Linux Mint and Ubuntu."
+sudo apt-get install git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig -y
 fi
 echo ""
 echo ""

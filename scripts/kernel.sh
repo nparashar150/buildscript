@@ -2,7 +2,9 @@
 echo "Running script"
 echo "Building"
 echo "Cloning dependencies"
-git clone --depth=1 -b rebase-perf+ https://github.com/MASTERGUY/kernel_xiaomi_msm8953 kernel
+echo "Paste the kenrel source for cloning."
+read clone
+git clone $clone kernel
 cd kernel
 git clone --depth=1 -b master https://github.com/kdrag0n/proton-clang clang
 git clone https://github.com/MASTERGUY/AnyKernel3 -b tissot --depth=1 AnyKernel
@@ -17,11 +19,15 @@ BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 export PATH="$(pwd)/clang/bin:$PATH"
 export KBUILD_COMPILER_STRING="$($kernel/clang/bin/clang --version | head -n 1 | perl -pe 's/\((?:http|git).*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' -e 's/^.*clang/clang/')"
 export ARCH=arm64
-export KBUILD_BUILD_USER=nparashar150
+echo "Enter your Name"
+read name
+export KBUILD_BUILD_USER=$name
 export KBUILD_BUILD_HOST=local
 # Compile plox
+echo "Enter the Defconfig Name of your device"
+read device
 function compile() {
-    make -j$(nproc) O=out ARCH=arm64 tissot_defconfig
+    make -j$(nproc) O=out ARCH=arm64 $device_defconfig
     make -j$(nproc) O=out \
                     ARCH=arm64 \
                       CC=clang \
@@ -52,9 +58,11 @@ function compile() {
     cp $DTB_T $REPACK_DIR/dtb-treble/
 }
 # Zipping
+echo "Enter the name for your new Kernel"
+read namekernel
 function zipping() {
     cd $REPACK_DIR || exit 1
-    zip -r9 Rify.zip *
+    zip -r9 $namekernel.zip *
 }
 compile
 zipping

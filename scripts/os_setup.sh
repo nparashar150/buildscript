@@ -3,7 +3,29 @@ echo ""
 echo ""
 echo "Welcome to the script."
 echo "Installing neccessary stuff for you."
-sudo apt-get install --ignore-missing -y vlc adb google-chrome-stable gnome-tweaks gnome-tweak-tool htop psensor telegram-desktop gimp tlp tlp-rdw grub-customizer repo android-tools-adb android-tools-fastboot lolcat toilet android-sdk-platform-tools-common speedtest-cli snap rsync python kazam
+sudo apt-get install --ignore-missing -y vlc 
+sudo apt-get install --ignore-missing -y adb 
+sudo apt-get install --ignore-missing -y google-chrome-stable 
+sudo apt-get install --ignore-missing -y gnome-tweaks 
+sudo apt-get install --ignore-missing -y gnome-tweak-tool 
+sudo apt-get install --ignore-missing -y htop 
+sudo apt-get install --ignore-missing -y psensor 
+sudo apt-get install --ignore-missing -y telegram-desktop 
+sudo apt-get install --ignore-missing -y gimp 
+sudo apt-get install --ignore-missing -y tlp 
+sudo apt-get install --ignore-missing -y tlp-rdw 
+sudo apt-get install --ignore-missing -y grub-customizer 
+sudo apt-get install --ignore-missing -y repo 
+sudo apt-get install --ignore-missing -y android-tools-adb 
+sudo apt-get install --ignore-missing -y android-tools-fastboot 
+sudo apt-get install --ignore-missing -y lolcat 
+sudo apt-get install --ignore-missing -y toilet 
+sudo apt-get install --ignore-missing -y android-sdk-platform-tools-common 
+sudo apt-get install --ignore-missing -y speedtest-cli 
+sudo apt-get install --ignore-missing -y snap 
+sudo apt-get install --ignore-missing -y rsync 
+sudo apt-get install --ignore-missing -y python 
+sudo apt-get install --ignore-missing -y kazam
 sudo tlp start
 sudo apt install git-all -y
 echo "Put your github username"

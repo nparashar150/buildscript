@@ -1,0 +1,111 @@
+#!/usr/bin/bash
+# Menu Item
+main_menu()
+{
+
+while :
+do
+	clear
+	echo " "
+    echo "-------------------------------------"
+    echo "         Welcome to My Script        "
+	echo "-------------------------------------"
+    echo "       Follow me @nparashar150       "
+	echo "-------------------------------------"
+	echo "            Main Menu "
+	echo "-------------------------------------"
+	echo "[1] Set up Build Environment"
+	echo "[2] Build Kernel for your Device"
+	echo "[3] Low RAM Patch"
+	echo "[4] Install softwares on Fresh OS install"
+	echo "[5] Exit"
+	echo "====================================="
+	echo "[*] Please run this as root if you did'nt"
+	echo ""
+	echo "Enter your menu choice [1-5]: \c "
+	read m_menu
+	
+	case "$m_menu" in
+
+		1) option_1;;
+		2) option_2;;
+		3) option_3;;
+		4) option_4;;
+		5) exit 0;;
+		*) echo "\nOpps!!! Please Select Correct Choice";
+		   echo "Press ENTER To Continue..." ; read ;;
+	esac
+done
+}
+
+option_1()
+{
+    echo "You have selected Option 1."
+    echo "Do you want to setup Build Environment?"
+    echo "Answer 1=yes and 2=no"
+    read Answer
+    if [ $Answer = 1 ]
+    then
+        git clone https://github.com/nparashar150/buildscript.git
+        cd buildscript/scripts
+        sudo bash env.sh
+    fi
+    if [ $Answer = 2 ]
+    then 
+        bash clone.sh
+    fi
+}
+
+option_2()
+{
+	echo "You have selected Option 2."
+    echo "Syncing the Tools and Cloning Repositories"
+    git clone https://github.com/nparashar150/buildscript.git
+    cd buildscript/scripts
+    bash kernel.sh
+}
+
+option_3()
+{
+	echo "You have selected Option 3."
+    echo "Patching your system for Low RAM"
+	echo "You have selected Option 3."
+    echo "Patching your system for Low RAM"
+	echo ""
+    echo ""
+    sudo apt install neofetch -y
+    SYSTEM_INFO="$(cat /proc/meminfo | grep MemTotal)"
+    if [[ ${SYSTEM_INFO} -lt "$4000000" ]]; then
+    echo ""
+	echo ""
+    echo "Installing ZRAM because you have Low RAM for building ROM."
+    sudo apt install zram-config
+    echo ""
+    rm -rf /etc/modules-load.d/zram.conf
+    rm -rf /etc/modprobe.d/zram.conf
+    rm -rf /etc/udev/rules.d/99-zram.rules
+    rm -rf /etc/systemd/system/zram.service
+    echo 'zram' >/etc/modules-load.d/zram.conf
+    echo 'options zram num_devices=1' >/etc/modprobe.d/zram.conf
+    echo 'KERNEL=="zram0", ATTR{disksize}="8192M",TAG+="systemd"' >/etc/udev/rules.d/99-zram.rules
+    printf '%s\n' '[Unit]' 'Description=Swap with zram' 'After=multi-user.target' '' '[Service]' 'Type=oneshot' 'RemainAfterExit=true' 'ExecStartPre=/sbin/mkswap /dev/zram0' 'ExecStart=/sbin/swapon /dev/zram0' 'ExecStop=/sbin/swapoff /dev/zram0' '' '[Install]' 'WantedBy=multi-user.target' >/etc/systemd/system/zram.service
+    systemctl enable zram
+    echo "All the things needed are done. Now sync the source."
+    echo "Then cherry pick the things needed from there :)"
+    echo -e '\e]8;;https://github.com/nparashar150/android_build_soong\aApply Metalava Patch from here if you have 8Gb RAM or less.\e]8;;\a'
+    echo "https://github.com/nparashar150/android_build_soong"
+    echo "I hope you liked my script."
+    echo -e '\e]8;;https://github.com/nparashar150/\aFollow Me for more support.\e]8;;\a'
+    echo "Done"
+	fi
+}
+
+option_4()
+{
+	echo "You have selected Option 4."
+	git clone https://github.com/nparashar150/buildscript.git
+	cd buildscript/scripts
+    sudo bash os_setup.sh
+}
+
+main_menu
