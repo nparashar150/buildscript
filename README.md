@@ -6,9 +6,10 @@ It will be a good gesture if you don't kang it ... !! Just Fork it ... |'`-_-`'|
 Configure it as per your ROM
 Well basic description of what my scripts can be used for :-
 
+all.sh ---> Better Script for basic work, run it and you won't need to run other scripts I hope xD.
 clone_build.sh ---> Used for cloning and building ROM. </br>
 env.sh --->  Used for setting up Build environment. </br>
-Kernel.sh ---> Used for cloning &amp; compiling kernel for Tissot. </br>
+kernel.sh ---> Used for cloning &amp; compiling kernel for Tissot. </br>
 mybuildcript.sh ---> My personal script. </br>
 os_setup.sh ---> Used for installing and configuring some basic stuff when you install fresh os. </br>
 
