@@ -26,6 +26,13 @@ sudo apt-get install --ignore-missing -y snap
 sudo apt-get install --ignore-missing -y rsync 
 sudo apt-get install --ignore-missing -y python 
 sudo apt-get install --ignore-missing -y kazam
+sudo apt-get install --ignore-missing -y libgtk-3-0
+sudo apt-get install --ignore-missing -y gtk-3-examples
+sudo apt-get install --ignore-missing -y libgtk-3-dev
+sudo apt-get install --ignore-missing -y inkscape
+sudo apt-get install --ignore-missing -y brave-browser
+sudo apt-get install --ignore-missing -y codeblocks codeblocks-common codeblocks-contrib codeblocks-dev
+sudo apt-get install --ignore-missing -y dolphin
 sudo tlp start
 sudo apt install git-all -y
 echo "Put your github username"
