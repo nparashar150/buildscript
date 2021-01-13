@@ -1,4 +1,4 @@
-#!/bin/bash
+e#!/bin/bash
 # This is the Build Scipt which will help you make your Custom Rom builds in more convenient way... !!
 echo ""
 echo "Sit freely you need to relax when this is going on"
@@ -19,6 +19,7 @@ echo "4. Sync Device Tree + Sync Device Tree Common + Sync Kernel + Sync Vendor"
 echo "5. Apply Patches"
 echo "6. Dirty Build"
 echo "7. Drity Build with api"
+echo "8. Install ANGULAR CLI + npm + nodejs"
 echo ""
 echo""
 read Option 
@@ -221,6 +222,19 @@ mka api-stubs-docs
 mka bacon -j$(nproc --all)
 echo "Hope my script worked for you ;)"
 fi
+if [ $Option = 8 ]
+then
+#Install Angular CLI
+sudo apt install npm -y --ignore-missing
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get update && sudo apt-get install yarn -y
+sudo apt install nodejs -y
+sudo dpkg -i --force-overwrite /var/cache/apt/archives/nodejs_12.20.1-deb-1nodesource1_amd64.deb
+sudo apt-get -f install
+node --version
+sudo npm install -g @angular/cli
+ng --version
+fi 
 fi 
 if [ $environment = no ]
 then 
