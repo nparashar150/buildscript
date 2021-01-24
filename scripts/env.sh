@@ -55,8 +55,8 @@ fi
 echo ""
 echo ""
 sudo apt install neofetch -y
-SYSTEM_INFO="$(cat /proc/meminfo | grep MemTotal)"
-if [[ ${SYSTEM_INFO} > "$9000000" ]]; then
+SYSTEM_INFO="$(cat /proc/meminfo | grep MemTotal | cut -b 18)"
+if [ ${SYSTEM_INFO} -lt 15 ]; then
 echo ""
 echo ""
 echo "Installing ZRAM because you have Low RAM for building ROM."

@@ -18,7 +18,8 @@ do
 	echo "[2] Build Kernel for your Device"
 	echo "[3] Low RAM Patch"
 	echo "[4] Install softwares on Fresh OS install"
-	echo "[5] Exit"
+    echo "[5] Install ZSH"
+	echo "[6] Exit"
 	echo "====================================="
 	echo "[*] Please run this as root if you did'nt"
 	echo ""
@@ -31,7 +32,8 @@ do
 		2) option_2;;
 		3) option_3;;
 		4) option_4;;
-		5) exit 0;;
+        5) option_5;;
+		6) exit 0;;
 		*) echo "\nOpps!!! Please Select Correct Choice";
 		   echo "Press ENTER To Continue..." ; read ;;
 	esac
@@ -41,27 +43,18 @@ done
 option_1()
 {
     echo "You have selected Option 1."
-    echo "Do you want to setup Build Environment?"
-    echo "Answer 1=yes and 2=no"
-    read Answer
-    if [ $Answer = 1 ]
-    then
-        git clone https://github.com/nparashar150/buildscript.git
-        cd buildscript/scripts
-        sudo bash env.sh
-    fi
-    if [ $Answer = 2 ]
-    then 
-        bash clone.sh
-    fi
+    echo "You wanna setup Build Environment?"
+    git clone https://github.com/nparashar150/buildscript.git  ~/Desktop
+    cd ~/Desktop/buildscript/scripts
+    sudo bash env.sh
 }
 
 option_2()
 {
 	echo "You have selected Option 2."
     echo "Syncing the Tools and Cloning Repositories"
-    git clone https://github.com/nparashar150/buildscript.git
-    cd buildscript/scripts
+    git clone https://github.com/nparashar150/buildscript.git  ~/Desktop
+    cd ~/Desktop/buildscript/scripts
     bash kernel.sh
 }
 
@@ -74,8 +67,8 @@ option_3()
 	echo ""
     echo ""
     sudo apt install neofetch -y
-    SYSTEM_INFO="$(cat /proc/meminfo | grep MemTotal)"
-    if [[ ${SYSTEM_INFO} -lt "$4000000" ]]; then
+    SYSTEM_INFO="$(cat /proc/meminfo | grep MemTotal | cut -b 18)"
+    if [ ${SYSTEM_INFO} -lt 15 ]; then
     echo ""
 	echo ""
     echo "Installing ZRAM because you have Low RAM for building ROM."
@@ -103,9 +96,17 @@ option_3()
 option_4()
 {
 	echo "You have selected Option 4."
-	git clone https://github.com/nparashar150/buildscript.git
-	cd buildscript/scripts
+	git clone https://github.com/nparashar150/buildscript.git  ~/Desktop
+	cd ~/Desktop/buildscript/scripts
     sudo bash os_setup.sh
+}
+
+option_5()
+{
+	echo "You have selected Option 5."
+	git clone https://github.com/nparashar150/buildscript.git  ~/Desktop
+	cd ~/Desktop/buildscript/scripts
+    sudo bash zsh.sh
 }
 
 main_menu
