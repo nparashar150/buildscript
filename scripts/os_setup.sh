@@ -3,7 +3,41 @@ echo ""
 echo ""
 echo "Welcome to the script."
 echo "Installing neccessary stuff for you."
-sudo apt-get install --ignore-missing -y vlc adb google-chrome-stable gnome-tweaks gnome-tweak-tool htop psensor telegram-desktop gimp tlp tlp-rdw grub-customizer repo android-tools-adb android-tools-fastboot lolcat toilet android-sdk-platform-tools-common speedtest-cli snap rsync python kazam libgtk-3-0 gtk-3-examples libgtk-3-dev inkscape brave-browser codeblocks codeblocks-common codeblocks-contrib codeblocks-dev dolphin curl acpi
+sudo apt-get install --ignore-missing -y vlc
+sudo apt-get install --ignore-missing -y adb
+sudo apt-get install --ignore-missing -y google-chrome-stable
+sudo apt-get install --ignore-missing -y gnome-tweaks
+sudo apt-get install --ignore-missing -y gnome-tweak-tool
+sudo apt-get install --ignore-missing -y htop
+sudo apt-get install --ignore-missing -y psensor
+sudo apt-get install --ignore-missing -y telegram-desktop
+sudo apt-get install --ignore-missing -y gimp
+sudo apt-get install --ignore-missing -y tlp
+sudo apt-get install --ignore-missing -y tlp-rdw
+sudo apt-get install --ignore-missing -y grub-customizer
+sudo apt-get install --ignore-missing -y repo
+sudo apt-get install --ignore-missing -y android-tools-adb
+sudo apt-get install --ignore-missing -y android-tools-fastboot
+sudo apt-get install --ignore-missing -y lolcat
+sudo apt-get install --ignore-missing -y toilet
+sudo apt-get install --ignore-missing -y android-sdk-platform-tools-common
+sudo apt-get install --ignore-missing -y speedtest-cli
+sudo apt-get install --ignore-missing -y snap
+sudo apt-get install --ignore-missing -y rsync
+sudo apt-get install --ignore-missing -y python
+sudo apt-get install --ignore-missing -y kazam
+sudo apt-get install --ignore-missing -y libgtk-3-0
+sudo apt-get install --ignore-missing -y gtk-3-examples
+sudo apt-get install --ignore-missing -y libgtk-3-dev
+sudo apt-get install --ignore-missing -y inkscape
+sudo apt-get install --ignore-missing -y brave-browser
+sudo apt-get install --ignore-missing -y codeblocks
+sudo apt-get install --ignore-missing -y codeblocks-common
+sudo apt-get install --ignore-missing -y codeblocks-contrib
+sudo apt-get install --ignore-missing -y codeblocks-dev
+sudo apt-get install --ignore-missing -y dolphin
+sudo apt-get install --ignore-missing -y curl
+sudo apt-get install --ignore-missing -y acpi
 sudo tlp start
 sudo apt install git-all -y
 echo "Put your github username"
