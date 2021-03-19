@@ -3,6 +3,8 @@ echo ""
 echo ""
 echo "Welcome to the script."
 echo "Installing neccessary stuff for you."
+sudo apt-get install --ignore-missing -y npm
+npm install jquery
 sudo apt-get install --ignore-missing -y vlc
 sudo apt-get install --ignore-missing -y adb
 sudo apt-get install --ignore-missing -y google-chrome-stable
