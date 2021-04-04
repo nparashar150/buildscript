@@ -7,7 +7,7 @@ This is the build script which includes how to sync &amp; how to configure &amp;
 </div>
 <br>
 
-It will be a good gesture if you don't kang it ... !! Just Fork it ... |'`<#!/>`'|
+It will be a good gesture if you don't kang it ... !! Just Fork it ... |'`:D`'|
 
 Configure it as per your ROM
 Well basic description of what my scripts can be used for :-
