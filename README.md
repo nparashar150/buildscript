@@ -1,4 +1,7 @@
 ## Buildscript
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/632f5af3d9814d2eb78de430a56a277a)](https://app.codacy.com/gh/nparashar150/buildscript?utm_source=github.com&utm_medium=referral&utm_content=nparashar150/buildscript&utm_campaign=Badge_Grade_Settings)
+
 This is the build script which includes how to sync &amp; how to configure &amp; how to build ROM... Change it as per your rom you just need a bit of editing if you want... !! 
 
 <div align="https://github.com/nparashar150/buildscript"><img src="https://img.shields.io/github/stars/nparashar150/buildscript?color=e84545" alt="Stars Badge"/></a>
