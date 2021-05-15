@@ -19,11 +19,12 @@ do
 	echo "[3] Low RAM Patch"
 	echo "[4] Install softwares on Fresh OS install"
     echo "[5] Install ZSH"
-	echo "[6] Exit"
+    echo "[6] Run WebD Script"
+	echo "[7] Exit"
 	echo "====================================="
 	echo "[*] Please run this as root if you did'nt"
 	echo ""
-	echo "Enter your menu choice [1-5]: \c "
+	echo "Enter your menu choice [1-7]: \c "
 	read m_menu
 	
 	case "$m_menu" in
@@ -33,7 +34,8 @@ do
 		3) option_3;;
 		4) option_4;;
         5) option_5;;
-		6) exit 0;;
+        6) option_6;;
+		7) exit 0;;
 		*) echo "\nOpps!!! Please Select Correct Choice";
 		   echo "Press ENTER To Continue..." ; read ;;
 	esac
@@ -107,6 +109,14 @@ option_5()
 	git clone https://github.com/nparashar150/buildscript.git  ~/Desktop
 	cd ~/Desktop/buildscript/scripts
     sudo bash zsh.sh
+}
+
+option_6()
+{
+	echo "You have selected Option 6."
+	git clone https://github.com/nparashar150/buildscript.git  ~/Desktop
+	cd ~/Desktop/buildscript/scripts
+    sudo bash webd.sh
 }
 
 main_menu
